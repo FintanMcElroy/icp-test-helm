@@ -1,0 +1,25 @@
+# Default values for micro-consumer.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+
+image:
+  repository: icp-test/consumer
+  tag: latest
+  pullPolicy: Always
+
+service:
+  name: consumer
+  type: ClusterIP
+  externalPort: 8080
+  internalPort: 8080
+
+tags:
+  app-role: consumer
+
+resources:
+  limits:
+    memory: 128Mi
+  requests:
+    memory: 64Mi
+
