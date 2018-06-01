@@ -2,11 +2,20 @@ apiVersion: v1
 entries:
   consumer:
   - apiVersion: v1
-    created: 2018-05-28T17:16:51.031661+01:00
+    created: 2018-06-01T17:33:13.8056603+01:00
     description: ICP Test Consumer Microservice
     digest: 55adfc77c3bc582a50987bc2c7d62cc618af396e4542849bcc2c5abe74a9af8b
     name: consumer
     urls:
     - consumer-0.0.1.tgz
     version: 0.0.1
-generated: 2018-05-28T17:16:51.0311599+01:00
+  consumer-mk:
+  - apiVersion: v1
+    created: 2018-06-01T17:33:13.8066628+01:00
+    description: Minkube Test Consumer Microservice
+    digest: 9ae6b387492a13529bc2bce533380866c05c8f6f175e215d4b64cf5d9a4a86b7
+    name: consumer-mk
+    urls:
+    - consumer-mk-0.0.1.tgz
+    version: 0.0.1
+generated: 2018-06-01T17:33:13.8016493+01:00
