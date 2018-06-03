@@ -24,4 +24,4 @@ resources:
     memory: 64Mi
 
 dependencies:
-  providerService: provider-svc
+  providerService: icp-test-provider-provider-svc
