@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-{{ .Chart.Name }}
   labels:
     app: icp-test
-    micro: consumer
+    micro: provider
     tier: middle
     release: {{.Release.Name | quote }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
@@ -14,17 +14,14 @@ spec:
     metadata:
       labels:
         app: icp-test
-        micro: consumer
+        micro: provider
         tier: middle
     spec:
       containers:
-      - name: consumer
+      - name: provider
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
-        env:
-        - name: PROVIDER_ENDPOINT
-          value: http://{{ .Values.dependencies.providerService }}.default.svc.cluster.local
         resources:
 {{ toYaml .Values.resources | indent 12 }}

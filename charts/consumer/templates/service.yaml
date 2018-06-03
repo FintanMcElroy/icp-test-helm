@@ -5,7 +5,7 @@ metadata:
   labels:
     app: icp-test
     micro: consumer
-    tier: frontend
+    tier: middle
     release: {{.Release.Name | quote }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
@@ -18,4 +18,4 @@ spec:
   selector:
     app: icp-test
     micro: consumer
-    tier: frontend
+    tier: middle

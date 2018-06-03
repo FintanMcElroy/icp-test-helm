@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}-{{ .Values.service.name }}
   labels:
     app: icp-test
-    micro: consumer
+    micro: provider
     tier: middle
     release: {{.Release.Name | quote }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
@@ -17,5 +17,5 @@ spec:
     name: http
   selector:
     app: icp-test
-    micro: consumer
+    micro: provider
     tier: middle

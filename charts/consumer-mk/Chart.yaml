@@ -1,4 +1,4 @@
 apiVersion: v1
-description: Minkube Test Consumer Microservice
+description: Minikube Test Consumer Microservice
 name: consumer-mk
 version: 0.0.1
