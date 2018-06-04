@@ -14,7 +14,7 @@ spec:
   - port: {{ .Values.service.internalPort }}
     nodePort: {{ .Values.service.externalPort }}
     protocol: TCP
-    name: tcp-{{ .Values.service.externalPort }}-{ .Values.service.internalPort }}
+    name: tcp-nodeport
   selector:
     app: icp-test
     micro: provider
