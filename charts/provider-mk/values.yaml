@@ -10,8 +10,8 @@ image:
 
 service:
   name: provider-svc
-  type: ClusterIP
-  externalPort: "8080"
+  type: NodePort
+  externalPort: "30099"
   internalPort: "8080"
 
 tags:

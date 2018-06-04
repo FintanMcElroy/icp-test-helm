@@ -26,7 +26,5 @@ spec:
         env:
         - name: PROVIDER_ENDPOINT
           value: {{ .Values.dependencies.providerService }} # probably need to also get Port from env
-        - name: PORT
-          value: {{ .Values.service.internalPort }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}
