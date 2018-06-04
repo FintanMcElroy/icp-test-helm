@@ -25,7 +25,7 @@ spec:
         - containerPort: {{ .Values.service.internalPort }}
         env:
         - name: PROVIDER_ENDPOINT
-          value: http://{{ .Values.dependencies.providerService }}.default.svc.cluster.local:8080 # probably need to also get Port from env
+          value: {{ .Values.dependencies.providerService }} # probably need to also get Port from env
         - name: PORT
           value: {{ .Values.service.internalPort }}
         resources:
