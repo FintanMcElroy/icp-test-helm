@@ -23,3 +23,5 @@ resources:
   requests:
     memory: 64Mi
 
+environment:
+  testData: this-is-just-a-test

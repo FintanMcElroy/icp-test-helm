@@ -24,7 +24,7 @@ spec:
         ports:
         - containerPort: {{ int .Values.service.internalPort }}
         env:
-        - name: PORT-TEST # for some reason we can't seem to pass an integer in as the value here
-          value: dummy
+        - name: TEST # want to see what this resolves to inside container code
+          value: {{ .Values.environment.testData }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}
