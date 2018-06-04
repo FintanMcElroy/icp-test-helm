@@ -1,12 +1,3 @@
 apiVersion: v1
-entries:
-  prov-mk:
-  - apiVersion: v1
-    created: 2018-06-04T13:32:29.7935256+01:00
-    description: Minikube Test Provider Microservice
-    digest: e78e176aa2a99186af70407000c97633d036f1ca6eff74fa0b1b2b7cd1c59a81
-    name: prov-mk
-    urls:
-    - prov-mk-0.0.1.tgz
-    version: 0.0.1
-generated: 2018-06-04T13:32:29.7930246+01:00
+entries: {}
+generated: 2018-06-04T14:45:24.7296051+01:00

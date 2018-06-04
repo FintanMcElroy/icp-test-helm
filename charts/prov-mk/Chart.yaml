@@ -1,4 +1,4 @@
 apiVersion: v1
 description: Minikube Test Provider Microservice
-name: prov-mk
+name: p-deploy
 version: 0.0.1
