@@ -9,7 +9,7 @@ image:
   pullPolicy: Never
 
 service:
-  name: consumer-svc
+  name: c-svc
   type: NodePort
   externalPort: 30098
   internalPort: 8080
@@ -24,5 +24,6 @@ resources:
     memory: 64Mi
 
 # Probably need a better way of doing this with entries for releaseName plus service name etc
+# prov-c-svc prov-c-svc.default prov-c-svc.default.svc.cluster.local
 dependencies:
-  providerService: 192.168.1.199 # icp-test-provider-provider-svc
+  providerService: 192.168.1.199
