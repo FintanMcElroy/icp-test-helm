@@ -9,10 +9,10 @@ image:
   pullPolicy: Never
 
 service:
-  name: provider-svc
+  name: p-svc
   type: NodePort
-  externalPort: "30099"
-  internalPort: "8080"
+  externalPort: 30099
+  internalPort: 8080
 
 tags:
   app-role: provider

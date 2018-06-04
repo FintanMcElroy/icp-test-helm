@@ -1,21 +1,12 @@
 apiVersion: v1
 entries:
-  consumer-mk:
+  prov-mk:
   - apiVersion: v1
-    created: 2018-06-04T13:18:56.7459537+01:00
-    description: Minikube Test Consumer Microservice
-    digest: 98d4d0826971845ffe03d92016c02a12610b0c4cf52f2bc0f7ea36391c9947fd
-    name: consumer-mk
-    urls:
-    - consumer-mk-0.0.1.tgz
-    version: 0.0.1
-  provider-mk:
-  - apiVersion: v1
-    created: 2018-06-04T13:18:56.7469592+01:00
+    created: 2018-06-04T13:32:29.7935256+01:00
     description: Minikube Test Provider Microservice
-    digest: 969e7fd7592aeaed7997971d25f44faa93461f4e1ec97b4d82389afa6ca183e9
-    name: provider-mk
+    digest: e78e176aa2a99186af70407000c97633d036f1ca6eff74fa0b1b2b7cd1c59a81
+    name: prov-mk
     urls:
-    - provider-mk-0.0.1.tgz
+    - prov-mk-0.0.1.tgz
     version: 0.0.1
-generated: 2018-06-04T13:18:56.7454531+01:00
+generated: 2018-06-04T13:32:29.7930246+01:00

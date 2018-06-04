@@ -22,7 +22,7 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
-        - containerPort: {{ int .Values.service.internalPort }}
+        - containerPort: {{ .Values.service.internalPort }}
         env:
         - name: TEST # want to see what this resolves to inside container code
           value: {{ .Values.environment.testData }}
