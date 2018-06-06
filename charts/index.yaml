@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   cons-mk:
   - apiVersion: v1
-    created: 2018-06-06T06:39:31.7284502+01:00
+    created: 2018-06-06T12:14:40.1739849+01:00
     description: Minikube Test Consumer Microservice
     digest: b12958fc6e77ef311e8be337c5a82f578174f42858954bb5dc30e0beb53f42bc
     name: cons-mk
@@ -11,11 +11,11 @@ entries:
     version: 0.0.1
   prov-mk:
   - apiVersion: v1
-    created: 2018-06-06T06:39:31.733936+01:00
+    created: 2018-06-06T12:14:40.1739849+01:00
     description: Minikube Test Provider Microservice
-    digest: eda32e8556c3ff88842eeb985d8fcfeee73ab78d7ea50fbbae7a5bdbaa4496e0
+    digest: e675643c73e0e2867e445cc1a04886fc0dcc9c14d3c21e45f82711a166d00568
     name: prov-mk
     urls:
     - prov-mk-0.0.1.tgz
     version: 0.0.1
-generated: 2018-06-06T06:39:31.7279495+01:00
+generated: 2018-06-06T12:14:40.1729809+01:00

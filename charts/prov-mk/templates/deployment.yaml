@@ -24,7 +24,9 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         env:
-        - name: TEST # want to see what this resolves to inside container code
+        - name: TEST # test to confirm it resolves inside container code
           value: {{ .Values.environment.testData }}
+        - name: testPort # PORT does not work as it complains about env var receiving an integer not a string
+          value: {{ .Values.service.internalPort }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}
