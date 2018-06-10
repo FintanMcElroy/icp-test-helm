@@ -33,18 +33,21 @@ spec:
         command: ["/bin/bash", "-c" ]
         args:
         - >
-                sleep 20;
+                sleep 30;
                 curl -X PUT http://admin:passw0rd@{{ .Release.Name }}-{{ .Values.service.name }}:{{ .Values.service.externalPort }}/greetings;
+                sleep 30;
                 curl -k -X POST -H "Content-Type: application/json" \
                         -d '{"lang": "DE", "greeting": "Guten Tag, Mein DB Herr!"}' \
                         http://admin:passw0rd@{{ .Release.Name }}-{{ .Values.service.name }}:{{ .Values.service.externalPort }}/greetings;
-                sleep 20;
+                sleep 30;
                 curl -k -X POST -H "Content-Type: application/json" \
                         -d '{"lang": "FR", "greeting": "Bonjour, Monsieur DB!"}' \
                         http://admin:passw0rd@{{ .Release.Name }}-{{ .Values.service.name }}:{{ .Values.service.externalPort }}/greetings;
-                sleep 20;
+                sleep 30;
                 curl -k -X POST -H "Content-Type: application/json" \
                         -d '{"lang": "EN", "greeting": "Hello there, old DB chap!"}' \
                         http://admin:passw0rd@{{ .Release.Name }}-{{ .Values.service.name }}:{{ .Values.service.externalPort }}/greetings;
-                sleep 20;
+                sleep 30;
+                echo 'Sleep now for 5 minutes to give time to check logs ...';
+                sleep 300;
         imagePullPolicy: IfNotPresent

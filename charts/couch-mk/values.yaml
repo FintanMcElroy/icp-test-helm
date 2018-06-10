@@ -14,7 +14,7 @@ password: passw0rd
 service:
   name: couchdb
   type: NodePort
-  externalPort: 30100
+  externalPort: 31111
   internalPort: 5984
 
 # used for setting up a Kubernetes secret

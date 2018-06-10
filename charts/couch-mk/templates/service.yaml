@@ -12,6 +12,6 @@ spec:
   - port: {{ .Values.service.internalPort }}
     nodePort: {{ .Values.service.extternalPort }}
     protocol: TCP
-    name: tcp-nodeport
+    name: np-{{ .Values.service.name }}
   selector:
 {{ toYaml .Values.labels | indent 4 }}
