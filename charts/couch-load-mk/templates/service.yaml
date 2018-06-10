@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.service.name }}
+  labels:
+{{ toYaml .Values.labels | indent 4 }}
+    release: {{.Release.Name | quote }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - port: {{ .Values.service.internalPort }}
+    nodePort: 31111
+    protocol: TCP
+    name: np-{{ .Values.service.name }}
+  selector:
+{{ toYaml .Values.labels | indent 4 }}
