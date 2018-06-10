@@ -22,7 +22,7 @@ spec:
              "name": "icp-test-load-db-greetings",
              "image": "{{ .Values.bash.image.repository }}:{{ .Values.bash.image.tag }}",
              "imagePullPolicy": "IfNotPresent",
-             "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}; do echo 'waiting for CouchDB ...'; sleep 10; done;sleep 60;"]
+             "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}; do echo waiting for CouchDB service; sleep 10; done;sleep 60;"]
           }
         ]'
     spec:
