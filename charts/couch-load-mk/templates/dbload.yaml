@@ -20,7 +20,7 @@ spec:
         pod.beta.kubernetes.io/init-containers: '[
           {
              "name": "icp-test-load-db-greetings",
-             "image": "{{ .Values.load-job.image.repository }}:{{ .Values.load-job.image.tag }}",
+             "image": "{{ .Values.dbload.image.repository }}:{{ .Values.dbload.image.tag }}",
              "imagePullPolicy": "IfNotPresent",
              "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.dbload.dbService.minikubeIP }}:{{ .Values.dbload.dbService.port }}; do echo waiting for CouchDB service; sleep 10; done;sleep 60;"]
           }
