@@ -22,7 +22,6 @@ spec:
              "name": "icp-test-load-db-greetings",
              "image": "{{ .Values.bash.image.repository }}:{{ .Values.bash.image.tag }}",
              "imagePullPolicy": "IfNotPresent",
-             # Waits for the target Container to be ready before running the container to execute bash DB loads
              "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}; do echo waiting for create-greetings; sleep 10; done;sleep 60;"]
           }
         ]'
@@ -36,8 +35,6 @@ spec:
         - >
                 sleep 30;
                 echo 'Going to create greetings DB ...';
-                # Note it should use the following but this does not resolve inside Minikube so have to use IP instead
-                # http://admin:passw0rd@{{ .Release.Name }}-{{ .Values.service.name }}:{{ .Values.service.externalPort }}/greetings
                 curl -X PUT http://admin:passw0rd@{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}/greetings;
                 sleep 30;
                 echo 'Going to add DE greeting ...';
