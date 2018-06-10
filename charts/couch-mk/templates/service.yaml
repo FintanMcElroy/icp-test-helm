@@ -10,7 +10,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
   - port: {{ .Values.service.internalPort }}
-    nodePort: {{ .Values.service.extternalPort }}
+    nodePort: 31111
     protocol: TCP
     name: np-{{ .Values.service.name }}
   selector:
