@@ -9,5 +9,5 @@ dbload:
     repository: ibmcase/bluecompute-bash-curl-ssl
     tag: latest
   dbService:
-    minikubeIP: 192.168.1.199
+    minikubeIP: 9.30.45.132
     port: 31111
