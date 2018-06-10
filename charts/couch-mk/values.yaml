@@ -46,7 +46,7 @@ labels:
   datastore: couchdb
 
 nodename: 
-# used for the batch job to connect to CouchDB and load a sample record
+# used for the batch Kubernetes job to connect to CouchDB and load sample records
 bash:
   image:
     repository: ibmcase/bluecompute-bash-curl-ssl
