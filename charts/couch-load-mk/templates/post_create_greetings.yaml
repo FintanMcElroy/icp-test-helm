@@ -3,7 +3,7 @@ kind: Job
 metadata:
   name: {{ cat .Release.Name "-" .Chart.Name "-create-greetings-" (randAlphaNum 5 | lower) | nospace | trunc 63 }}
   labels:
-    app: bluecompute
+    app: couchdb
     heritage: {{.Release.Service | quote }}
     release: {{.Release.Name | quote }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
@@ -12,7 +12,7 @@ spec:
     metadata:
       name: {{ cat .Release.Name "-" .Chart.Name "-create-greetings-" (randAlphaNum 5 | lower) | nospace }}
       labels:
-        app: bluecompute
+        app: couchdb
         heritage: {{.Release.Service | quote }}
         release: {{.Release.Name | quote }}
         chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
@@ -20,38 +20,38 @@ spec:
         pod.beta.kubernetes.io/init-containers: '[
           {
              "name": "icp-test-load-db-greetings",
-             "image": "{{ .Values.bash.image.repository }}:{{ .Values.bash.image.tag }}",
+             "image": "{{ .Values.load-job.image.repository }}:{{ .Values.load-job.image.tag }}",
              "imagePullPolicy": "IfNotPresent",
-             "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}; do echo waiting for CouchDB service; sleep 10; done;sleep 60;"]
+             "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.load-job.dbService.minikubeIP }}:{{ .Values.load-job.dbService.port }}; do echo waiting for CouchDB service; sleep 10; done;sleep 60;"]
           }
         ]'
     spec:
       restartPolicy: Never
       containers:
       - name: create-greetings
-        image: {{ .Values.bash.image.repository }}:{{ .Values.bash.image.tag }}
+        image: {{ .Values.load-job.image.repository }}:{{ .Values.load-job.image.tag }}
         command: ["/bin/bash", "-c" ]
         args:
         - >
                 echo 'Sleep for 3 minutes before starting CouchDB interactions ...';
                 sleep 180;
                 echo 'Going to create greetings DB ...';
-                curl -X PUT http://admin:passw0rd@{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}/greetings;
+                curl -X PUT http://admin:passw0rd@{{ .Values.load-job.dbService.minikubeIP }}:{{ .Values.load-job.dbService.port }}/greetings;
                 sleep 180;
                 echo 'Going to add DE greeting ...';
                 curl -k -X POST -H "Content-Type: application/json" \
                         -d '{"lang": "DE", "greeting": "Guten Tag, Mein DB Herr!"}' \
-                        http://admin:passw0rd@{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}/greetings;
+                        http://admin:passw0rd@{{ .Values.load-job.dbService.minikubeIP }}:{{ .Values.load-job.dbService.port }}/greetings;
                 sleep 30;
                 echo 'Going to add FR greeting ...';
                 curl -k -X POST -H "Content-Type: application/json" \
                         -d '{"lang": "FR", "greeting": "Bonjour, Monsieur DB!"}' \
-                        http://admin:passw0rd@{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}/greetings;
+                        http://admin:passw0rd@{{ .Values.load-job.dbService.minikubeIP }}:{{ .Values.load-job.dbService.port }}/greetings;
                 sleep 30;
                 echo 'Going to add EN greeting ...';
                 curl -k -X POST -H "Content-Type: application/json" \
                         -d '{"lang": "EN", "greeting": "Hello there, old DB chap!"}' \
-                        http://admin:passw0rd@{{ .Values.service.minikubeIP }}:{{ .Values.service.externalPort }}/greetings;
+                        http://admin:passw0rd@{{ .Values.load-job.dbService.minikubeIP }}:{{ .Values.load-job.dbService.port }}/greetings;
                 sleep 30;
                 echo 'Sleep now for 5 minutes to give time to check logs ...';
                 sleep 300;
