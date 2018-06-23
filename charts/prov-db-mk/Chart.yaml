@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Minikube Test Provider Microservice
+name: prov-db-mk
+version: 0.0.1

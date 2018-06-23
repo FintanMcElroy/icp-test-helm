@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  labels:
+    app: icp-test
+    micro: provider
+    tier: middle
+    release: {{.Release.Name | quote }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: icp-test
+        micro: provider
+        tier: middle
+    spec:
+      containers:
+      - name: provider
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.internalPort }}
+        env:
+        - name: TEST # test to confirm it resolves inside container code
+          value: {{ .Values.environment.testData }}
+       - name: SERVERPORT # PORT does not work as it complains about env var receiving an integer not a string
+          value: !!integer {{ .Values.service.internalPort }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}

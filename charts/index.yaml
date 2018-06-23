@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   couch-load-mk:
   - apiVersion: v1
-    created: 2018-06-10T14:21:18.3829862+01:00
+    created: 2018-06-23T09:55:00.8912804+01:00
     description: CouchDB-Load
     digest: 0f80cda9b487c1381d6ef3f42bdd87414eb8a31045c35d618886a133d0058c6c
     icon: http://couchdb.apache.org/image/couch@2x.png
@@ -10,4 +10,13 @@ entries:
     urls:
     - couch-load-mk-0.0.1.tgz
     version: 0.0.1
-generated: 2018-06-10T14:21:18.3819834+01:00
+  prov-db-mk:
+  - apiVersion: v1
+    created: 2018-06-23T09:55:00.8922999+01:00
+    description: Minikube Test Provider Microservice
+    digest: 4ccb39774d63c2ba85b59a4de4176ed099c6fc33bc9b6f2ae352f29124024f73
+    name: prov-db-mk
+    urls:
+    - prov-db-mk-0.0.1.tgz
+    version: 0.0.1
+generated: 2018-06-23T09:55:00.8872875+01:00
