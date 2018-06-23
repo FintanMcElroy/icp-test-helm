@@ -27,4 +27,5 @@ resources:
 # Works: 192.168.1.199
 # Fails: prov-p-svc, prov-p-svc.default.svc.cluster.local
 dependencies:
-  providerService: 192.168.1.199
+  providerEndpoint: 192.168.1.199
+  providerPort: 30099

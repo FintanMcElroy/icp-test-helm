@@ -25,6 +25,10 @@ spec:
         - containerPort: {{ .Values.service.internalPort }}
         env:
         - name: PROVIDER_ENDPOINT
-          value: {{ .Values.dependencies.providerService }} # probably need to also get Port from env
+          value: {{ .Values.dependencies.providerEndpoint }}
+        - name: PROVIDER_PORT
+          value: !!integer {{ .Values.dependencies.providerPort }} # needs the !!integer directive otherwise fails
+        - name: SERVERPORT 
+          value: !!integer {{ .Values.service.internalPort }} # needs the !!integer directive otherwise fails
         resources:
 {{ toYaml .Values.resources | indent 12 }}
