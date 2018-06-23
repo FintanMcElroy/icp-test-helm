@@ -2,16 +2,16 @@ apiVersion: v1
 entries:
   cons-mk:
   - apiVersion: v1
-    created: 2018-06-23T12:17:00.7712712+01:00
+    created: 2018-06-23T15:15:11.5899843+01:00
     description: Minikube Test Consumer Microservice
-    digest: 527962018ccc32465cab07aec392e0e9fc651cb6755ed220fb1a6f9fa12d4d18
+    digest: 19aac0bed9896da02670a059eaaa3fdbabf4a4a17c9c6a8e8f8946db0fe1fd31
     name: cons-mk
     urls:
     - cons-mk-0.0.1.tgz
     version: 0.0.1
   couch-load-mk:
   - apiVersion: v1
-    created: 2018-06-23T12:17:00.7712712+01:00
+    created: 2018-06-23T15:15:11.5909876+01:00
     description: CouchDB-Load
     digest: 0f80cda9b487c1381d6ef3f42bdd87414eb8a31045c35d618886a133d0058c6c
     icon: http://couchdb.apache.org/image/couch@2x.png
@@ -21,11 +21,11 @@ entries:
     version: 0.0.1
   prov-db-mk:
   - apiVersion: v1
-    created: 2018-06-23T12:17:00.7712712+01:00
+    created: 2018-06-23T15:15:11.5909876+01:00
     description: Minikube Test Provider Microservice
     digest: f22041d1a6aa8ab74fde925e90b3760a387fc7d5d2a092f30c9b6caf35d7e608
     name: prov-db-mk
     urls:
     - prov-db-mk-0.0.1.tgz
     version: 0.0.1
-generated: 2018-06-23T12:17:00.7702683+01:00
+generated: 2018-06-23T15:15:11.5899843+01:00
