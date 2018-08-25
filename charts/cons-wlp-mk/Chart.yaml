@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Minikube Test Consumer Microservice (WLP)
+name: cons-wlp-mk
+version: 0.0.1

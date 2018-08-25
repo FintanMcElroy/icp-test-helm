@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  labels:
+    app: icp-test
+    micro: consumer
+    tier: middle
+    release: {{.Release.Name | quote }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: icp-test
+        micro: consumer
+        tier: middle
+    spec:
+      containers:
+      - name: consumer
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.internalPort }}
+        env:
+        - name: PROVIDER_ENDPOINT
+          value: {{ .Values.dependencies.providerEndpoint }}
+        - name: PROVIDER_PORT
+          value: !!integer {{ .Values.dependencies.providerPort }} # needs the !!integer directive otherwise fails
+        - name: SERVERPORT 
+          value: !!integer {{ .Values.service.internalPort }} # needs the !!integer directive otherwise fails
+        resources:
+{{ toYaml .Values.resources | indent 12 }}

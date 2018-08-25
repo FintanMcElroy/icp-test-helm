@@ -1,0 +1,31 @@
+# Default values for micro-consumer.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+
+image:
+  repository: icp-test/consumer-wlp
+  tag: latest
+  pullPolicy: Never
+
+service:
+  name: c-wlp-svc
+  type: NodePort
+  externalPort: 30198
+  internalPort: 8080
+
+tags:
+  app-role: consumer
+
+resources:
+  limits:
+    memory: 128Mi
+  requests:
+    memory: 64Mi
+
+# Probably need a better way of doing this with entries for releaseName plus service name etc
+# Works: 192.168.1.199 (Lubuntu) 9.30.45.132 (Fyre)
+# Fails: prov-p-svc, prov-p-svc.default.svc.cluster.local
+dependencies:
+  providerEndpoint: 9.30.45.132
+  providerPort: 30199
