@@ -12,7 +12,7 @@ service:
   name: p-wlp-svc
   type: NodePort
   externalPort: 30199
-  internalPort: 8080
+  internalPort: 9080
 
 tags:
   app-role: provider

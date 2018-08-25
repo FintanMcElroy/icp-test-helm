@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   cons-mk:
   - apiVersion: v1
-    created: 2018-08-25T11:21:40.504517+01:00
+    created: 2018-08-25T13:22:47.1345956+01:00
     description: Minikube Test Consumer Microservice
     digest: 19aac0bed9896da02670a059eaaa3fdbabf4a4a17c9c6a8e8f8946db0fe1fd31
     name: cons-mk
@@ -11,16 +11,16 @@ entries:
     version: 0.0.1
   cons-wlp-mk:
   - apiVersion: v1
-    created: 2018-08-25T11:21:40.5055142+01:00
+    created: 2018-08-25T13:22:47.135586+01:00
     description: Minikube Test Consumer Microservice (WLP)
-    digest: f688d83675ac6dc79925ab130509ac5470be7dc9fcef8ba260058ffc485903eb
+    digest: 41f752d5033848edaa98495fe73d3bf638f75e7d938776a91bfd3f82e9e15ff8
     name: cons-wlp-mk
     urls:
     - cons-wlp-mk-0.0.1.tgz
     version: 0.0.1
   couch-load-mk:
   - apiVersion: v1
-    created: 2018-08-25T11:21:40.5095324+01:00
+    created: 2018-08-25T13:22:47.1385783+01:00
     description: CouchDB-Load
     digest: 0f80cda9b487c1381d6ef3f42bdd87414eb8a31045c35d618886a133d0058c6c
     icon: http://couchdb.apache.org/image/couch@2x.png
@@ -30,7 +30,7 @@ entries:
     version: 0.0.1
   prov-db-mk:
   - apiVersion: v1
-    created: 2018-08-25T11:21:40.5134992+01:00
+    created: 2018-08-25T13:22:47.1415808+01:00
     description: Minikube Test Provider Microservice
     digest: f22041d1a6aa8ab74fde925e90b3760a387fc7d5d2a092f30c9b6caf35d7e608
     name: prov-db-mk
@@ -39,11 +39,11 @@ entries:
     version: 0.0.1
   prov-db-wlp-mk:
   - apiVersion: v1
-    created: 2018-08-25T11:21:40.5134992+01:00
+    created: 2018-08-25T13:22:47.1425667+01:00
     description: Minikube Test Provider Microservice (WLP)
-    digest: 9b336158398518a155e7cc0938e12ff6e018c7845ba559776425b42f005d1b6e
+    digest: 57ae9bf56da12259bbc94e109015f438b0dcaf7ac7f8cd5deee051566adbc4c4
     name: prov-db-wlp-mk
     urls:
     - prov-db-wlp-mk-0.0.1.tgz
     version: 0.0.1
-generated: 2018-08-25T11:21:40.4995295+01:00
+generated: 2018-08-25T13:22:47.130631+01:00
