@@ -4,14 +4,14 @@
 replicaCount: 1
 
 image:
-  repository: icp-test/provider
+  repository: mycluster.icp:8500/default/icp-test-prov-db
   tag: latest
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 service:
-  name: provider-svc
-  type: ClusterIP
-  externalPort: 8080
+  name: p-svc
+  type: NodePort
+  externalPort: 30099
   internalPort: 8080
 
 tags:
@@ -23,3 +23,5 @@ resources:
   requests:
     memory: 64Mi
 
+environment:
+  testData: this-is-just-a-test

@@ -1,4 +1,4 @@
 apiVersion: v1
 description: ICP Test Provider Microservice
-name: provider
+name: prov-db
 version: 0.0.1

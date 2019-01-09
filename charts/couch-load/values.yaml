@@ -1,0 +1,13 @@
+# Default values for couch-load.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+# used for the batch Kubernetes job to connect to CouchDB and load sample records
+dbload:
+  image:
+    repository: ibmcase/bluecompute-bash-curl-ssl
+    tag: latest
+  dbService:
+    icpIP: 9.20.194.58
+    port: 31111

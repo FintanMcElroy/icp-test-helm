@@ -23,5 +23,10 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
+        env:
+        - name: TEST # test to confirm it resolves inside container code
+          value: {{ .Values.environment.testData }}
+        - name: SERVERPORT 
+          value: !!integer {{ .Values.service.internalPort }} # needs the !!integer directive otherwise fails
         resources:
 {{ toYaml .Values.resources | indent 12 }}

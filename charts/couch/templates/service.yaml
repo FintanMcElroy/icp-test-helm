@@ -3,19 +3,15 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-{{ .Values.service.name }}
   labels:
-    app: icp-test
-    micro: consumer
-    tier: middle
+{{ toYaml .Values.labels | indent 4 }}
     release: {{.Release.Name | quote }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
 spec:
   type: {{ .Values.service.type }}
   ports:
   - port: {{ .Values.service.internalPort }}
-    nodePort: {{ .Values.service.externalPort }}
+    nodePort: 31111
     protocol: TCP
-    name: tcp-nodeport
+    name: np-{{ .Values.service.name }}
   selector:
-    app: icp-test
-    micro: consumer
-    tier: middle
+{{ toYaml .Values.labels | indent 4 }}

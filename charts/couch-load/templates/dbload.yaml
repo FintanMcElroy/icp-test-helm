@@ -1,0 +1,61 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ cat .Release.Name "-" .Chart.Name "-create-greetings-" (randAlphaNum 5 | lower) | nospace | trunc 63 }}
+  labels:
+    app: couchdb
+    heritage: {{.Release.Service | quote }}
+    release: {{.Release.Name | quote }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+spec:
+  template:
+    metadata:
+      name: {{ cat .Release.Name "-" .Chart.Name "-create-greetings-" (randAlphaNum 5 | lower) | nospace }}
+      labels:
+        app: couchdb
+        heritage: {{.Release.Service | quote }}
+        release: {{.Release.Name | quote }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+      annotations:
+        pod.beta.kubernetes.io/init-containers: '[
+          {
+             "name": "icp-test-load-db-greetings",
+             "image": "{{ .Values.dbload.image.repository }}:{{ .Values.dbload.image.tag }}",
+             "imagePullPolicy": "IfNotPresent",
+             "command": ["/bin/bash", "-c", "until curl --max-time 1 http://{{ .Values.dbload.dbService.icpIP }}:{{ .Values.dbload.dbService.port }}; do echo waiting for CouchDB service; sleep 10; done;sleep 60;"]
+          }
+        ]'
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: create-greetings
+        image: {{ .Values.dbload.image.repository }}:{{ .Values.dbload.image.tag }}
+        command: ["/bin/bash", "-c" ]
+        args:
+        - >
+                echo 'Sleep for 1 minute before starting CouchDB interactions ...';
+                sleep 60;
+                echo 'Going to create greetings DB ...';
+                curl -X PUT http://admin:passw0rd@{{ .Values.dbload.dbService.icpIP }}:{{ .Values.dbload.dbService.port }}/greetings;
+                echo 'DB created, sleep 30 seconds ...';
+                sleep 30;
+                echo 'Going to add DE greeting ...';
+                curl -k -X POST -H "Content-Type: application/json" \
+                        -d '{"lang": "DE", "greeting": "Guten Tag, Mein DB Herr!"}' \
+                        http://admin:passw0rd@{{ .Values.dbload.dbService.icpIP }}:{{ .Values.dbload.dbService.port }}/greetings;
+                echo 'Greeting added, sleep 30 seconds ...';
+                sleep 30;
+                echo 'Going to add FR greeting ...';
+                curl -k -X POST -H "Content-Type: application/json" \
+                        -d '{"lang": "FR", "greeting": "Bonjour, Monsieur DB!"}' \
+                        http://admin:passw0rd@{{ .Values.dbload.dbService.icpIP }}:{{ .Values.dbload.dbService.port }}/greetings;
+                echo 'Greeting added, sleep 30 seconds ...';
+                sleep 30;
+                echo 'Going to add EN greeting ...';
+                curl -k -X POST -H "Content-Type: application/json" \
+                        -d '{"lang": "EN", "greeting": "Hello there, old DB chap!"}' \
+                        http://admin:passw0rd@{{ .Values.dbload.dbService.icpIP }}:{{ .Values.dbload.dbService.port }}/greetings;
+                echo 'Greeting added';
+                echo 'Sleep now for 5 minutes to keep Job container alive and so give time to check active logs ...';
+                sleep 300;
+        imagePullPolicy: IfNotPresent
